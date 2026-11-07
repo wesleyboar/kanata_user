@@ -1,0 +1,40 @@
+;; Left-handed Half-QWERTY experiment.
+;;
+;; Base is ordinary US QWERTY. Hold Space to use the left hand for the
+;; right-hand letters, punctuation, navigation, and editing keys.
+;; Tap Space normally to insert a space.
+
+(defcfg
+  process-unmapped-keys yes
+)
+
+(defsrc
+  grv 1 2 3 4 5 6 7 8 9 0 - = bspc
+  tab q w e r t y u i o p [ ] \
+  caps a s d f g h j k l ; ' ret
+  lsft z x c v b n m , . / rsft
+  lctl lmet lalt spc ralt rmet rctl
+)
+
+(defalias
+  left (tap-hold-release 200 200 spc (layer-while-held left-hand))
+)
+
+(deflayer base
+  grv 1 2 3 4 5 6 7 8 9 0 - = bspc
+  tab q w e r t y u i o p [ ] \
+  caps a s d f g h j k l ; ' ret
+  lsft z x c v b n m , . / rsft
+  lctl lmet lalt @left ralt rmet rctl
+)
+
+;; The right-hand keys are mirrored onto the left side by physical position:
+;; y/u/i/o/p -> t/r/e/w/q, h/j/k/l/;/’ -> g/f/d/s/a, n/m/,/.// -> b/v/c/x/z.
+;; The number row and punctuation are mirrored where practical.
+(deflayer left-hand
+  grv 0 9 8 7 6 5 4 3 2 1 = - bspc
+  tab p o i u y t r e w q ] [ \
+  caps ; l k j h g f d s a ' ret
+  lsft / . , m n b v c x z rsft
+  lctl lmet lalt XX  ralt rmet rctl
+)
