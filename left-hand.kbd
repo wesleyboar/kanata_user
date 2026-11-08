@@ -26,9 +26,9 @@
 )
 
 (deflayer left-hand
-  grv  0    9    8    7    6    5    4    3    2    1    =    -   
-  bspc tab  p    o    i    u    y    t    r    e    w    q    ]    [   
-  \    ret  ;    l    k    j    h    g    f    d    s    a    '    ret 
+  grv  6    7    8    9    0    1    2    3    4    5    _    _   
+  bspc bspc p    o    i    u    y    t    r    e    w    q    _    _   
+  \    ret  ;    l    k    j    h    g    f    d    s    a    '    _   
   lsft /    .    ,    m    n    b    v    c    x    z    rsft lctl
   lmet lalt XX   ralt rmet rctl
 )
