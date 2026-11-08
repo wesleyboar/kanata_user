@@ -14,21 +14,30 @@
 )
 
 (defalias
-  left (tap-hold-release 200 200 spc (layer-while-held left-hand))
+  mir (tap-hold-release 200 200 spc (layer-while-held spc-mirror))
+  pun (tap-hold-release 200 200 caps (layer-while-held cap-punct))
 )
 
 (deflayer base
   grv  1    2    3    4    5    6    7    8    9    0    -    =   
   bspc tab  q    w    e    r    t    y    u    i    o    p    [    ]   
-  \    caps a    s    d    f    g    h    j    k    l    ;    '    ret 
+  \    @pun a    s    d    f    g    h    j    k    l    ;    '    ret 
   lsft z    x    c    v    b    n    m    ,    .    /    rsft lctl
-  lmet lalt @left ralt rmet rctl
+  lmet lalt @mir ralt rmet rctl
 )
 
-(deflayer left-hand
+(deflayer spc-mirror
   grv  6    7    8    9    0    1    2    3    4    5    _    _   
   bspc bspc p    o    i    u    y    t    r    e    w    q    _    _   
   \    ret  ;    l    k    j    h    g    f    d    s    a    '    _   
   lsft /    .    ,    m    n    b    v    c    x    z    rsft lctl
   lmet lalt XX   ralt rmet rctl
+)
+
+(deflayer cap-punct
+  _    -    =    _    _    _    _    _    _    _    _    _    _   
+  _    del  [    ]    \    _    _    _    _    _    _    _    _    _   
+  _    _    ;    '    del  _    _    _    _    _    _    _    _    _   
+  _    /    .    ,    _    _    _    _    _    _    _    _    _   
+  _    _    _    _    _    _   
 )
