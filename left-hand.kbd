@@ -29,15 +29,15 @@
 (deflayer spc-mirror
   grv  6    7    8    9    0    1    2    3    4    5    _    _   
   bspc bspc p    o    i    u    y    t    r    e    w    q    _    _   
-  \    ret  ;    l    k    j    h    g    f    d    s    a    '    _   
+  \    ret  '    l    k    j    h    g    f    d    s    a    _    _   
   lsft /    .    ,    m    n    b    v    c    x    z    rsft lctl
   lmet lalt XX   ralt rmet rctl
 )
 
 (deflayer cap-punct
   _    -    =    _    _    _    _    _    _    _    _    _    _   
-  _    del  [    ]    \    _    _    _    _    _    _    _    _    _   
-  _    _    ;    '    del  _    _    _    _    _    _    _    _    _   
+  _    \    [    ]    \    _    _    _    _    _    _    _    _    _   
+  _    _    '    ;    del  _    _    _    _    _    _    _    _    _   
   _    /    .    ,    _    _    _    _    _    _    _    _    _   
   _    _    _    _    _    _   
 )
