@@ -36,7 +36,7 @@
 
 (deflayer cap-punct
   0    -    =    _    _    _    _    _    _    _    _    _    _   
-  _    \    [    ]    \    _    (multi lsft grv) _    _    _    _    _    _    _   
+  _    \    [    ]    (multi lsft 9) (multi lsft 0) (multi lsft grv) _    _    _    _    _    _    _   
   _    _    '    ;    del  _    grv  _    _    _    _    _    _    _   
   _    /    .    ,    _    _    _    _    _    _    _    _    _   
   _    _    _    _    _    _   
