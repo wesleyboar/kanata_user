@@ -1,1 +1,1 @@
-Each `*.kbd` is a manually synchronized interchange file between this repository and [Mantle](https://getmantle.app) software, which is powered by [Kanata](https://github.com/jtroo/kanata).
+The `*.kbd` files are the Kanata configurations used by this repository. Edit them directly, validate them with Kanata, and reload the Kanata launchd service after making changes. See [Kanata's configuration guide](https://github.com/jtroo/kanata/blob/main/docs/config.adoc) for syntax and behavior.
