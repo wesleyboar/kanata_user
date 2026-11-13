@@ -16,6 +16,18 @@
 (defalias
   mir (tap-hold-release 200 200 spc (layer-while-held spc-mirror))
   pun (tap-hold-release 200 200 caps (layer-while-held cap-punct))
+  punc-lsft (chord punc-del s)
+  punc-d    (chord punc-del d)
+)
+
+(defoverrides
+  (lsft bspc) (del)
+)
+
+(defchords punc-del 200
+  (s)    lsft
+  (d)    bspc
+  (s d)  del
 )
 
 (deflayer base
@@ -37,7 +49,7 @@
 (deflayer cap-punct
   0    -    =    _    _    _    _    _    _    _    _    _    _   
   _    \    [    ]    (multi lsft 9) (multi lsft 0) (multi lsft grv) _    _    _    _    _    _    _   
-  _    _    '    ;    del  _    grv  _    _    _    _    _    _    _   
-  _    /    .    ,    _    _    _    _    _    _    _    _    _   
+  _    _    '    ;    @punc-d  _    grv  _    _    _    _    _    _    _   
+  @punc-lsft /    .    ,    _    _    _    _    _    _    _    _    _   
   _    _    _    _    _    _   
 )
