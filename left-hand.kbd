@@ -39,13 +39,25 @@
     (lsft) del break
     ()      bspc break
   )
+  nav-z (switch
+    ((or lmet rmet)) z break
+    ()               / break
+  )
+  nav-x (switch
+    ((or lmet rmet)) x break
+    ()               . break
+  )
+  nav-c (switch
+    ((or lmet rmet)) c break
+    ()               , break
+  )
   punc-spc  lsft
   punc-d    @pun-d
 )
 
 ;; Double-tapping Caps enters and exits the persistent navigation layer.
 ;; Space+Caps produces Return while in NAV.
-;; Q/E produce parentheses when the layer's Shift key is held.
+;; Q/W produce parentheses when the layer's Shift key is held.
 (defchordsv2
   (spc caps)  ret        500 all-released (base cap-punct spc-mirror)
 )
@@ -72,7 +84,7 @@
 
 (deflayer cap-punct
   0    -    =    _    _    _    _    _    _    _    _    _    _   
-  _    \    @paren-q XX   @paren-e XX   (multi lsft grv) _    _    _    _    _    _    _   
+  _    \    @paren-q @paren-e XX XX   (multi lsft grv) _    _    _    _    _    _    _   
   _    _    '    ;    @pun-d  _    grv  _    _    _    _    _    _    _
   _    /    .    ,    _    _    _    _    _    _    _    _    _
   _    _    @punc-spc _    _    _   
@@ -80,8 +92,8 @@
 
 (deflayer nav
   _    -    =    _    _    _    _    _    _    _    _    _    _
-  _    bspc  @paren-q up   @paren-e spc  tab  _    _    _    _    _    _    _
-  _    @nvc  left down rght S-ret _    _    _    _    _    _    _    _
-  lalt /    .    ,    _    _    _    _    _    _    _    _    _
+  _    bspc  @paren-q @paren-e up spc  tab  _    _    _    _    _    _    _
+  _    @nvc  _    left down rght S-ret _    _    _    _    _    _    _
+  lalt @nav-z @nav-x @nav-c _ _ _    _    _    _    _    _    _
   _    _    lsft _    _    _
 )
