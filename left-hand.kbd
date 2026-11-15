@@ -2,6 +2,7 @@
 
 (defcfg
   process-unmapped-keys yes
+  concurrent-tap-hold yes
 )
 
 (defsrc
@@ -15,21 +16,39 @@
 (defalias
   mir (tap-hold-release 200 200 spc (layer-while-held spc-mirror))
   pun (tap-hold-release 200 200 caps (layer-while-held cap-punct))
-  punc-lsft (chord punc-del s)
-  punc-d    (chord punc-del d)
-  punc-spc  (chord punc-del spc)
+  nav-toggle (switch
+    ((layer base)) (layer-switch nav) break
+    ((layer nav))  (layer-switch base) break
+    ()             XX break
+  )
+  paren-q (switch
+    ((and lsft lalt)) [ break
+    (lsft) S-9 break
+    ()      [ break
+  )
+  paren-e (switch
+    ((and lsft lalt)) ] break
+    (lsft) S-0 break
+    ()      ] break
+  )
+  pun-d (switch
+    (lsft) del break
+    ()      bspc break
+  )
+  punc-spc  lsft
+  punc-d    @pun-d
+)
+
+;; Command+Shift enters and exits the persistent navigation layer.
+;; Space+Caps produces Return while in NAV.
+;; Q/E produce parentheses when the layer's Shift key is held.
+(defchordsv2
+  (lsft lmet) @nav-toggle 500 all-released ()
+  (spc caps)  ret        500 all-released (base cap-punct spc-mirror)
 )
 
 (defoverrides
   (lsft bspc) (del)
-)
-
-(defchords punc-del 200
-  (s)    lsft
-  (d)    bspc
-  (spc)  lsft
-  (s d)  del
-  (spc d) del
 )
 
 (deflayer base
@@ -50,8 +69,16 @@
 
 (deflayer cap-punct
   0    -    =    _    _    _    _    _    _    _    _    _    _   
-  _    \    [    ]    (multi lsft 9) (multi lsft 0) (multi lsft grv) _    _    _    _    _    _    _   
-  _    _    '    ;    @punc-d  _    grv  _    _    _    _    _    _    _   
-  @punc-lsft /    .    ,    _    _    _    _    _    _    _    _    _   
+  _    \    @paren-q XX   @paren-e XX   (multi lsft grv) _    _    _    _    _    _    _   
+  _    _    '    ;    @pun-d  _    grv  _    _    _    _    _    _    _
+  _    /    .    ,    _    _    _    _    _    _    _    _    _
   _    _    @punc-spc _    _    _   
+)
+
+(deflayer nav
+  _    -    =    _    _    _    _    _    _    _    _    _    _
+  _    bspc  @paren-q up   @paren-e spc  tab  _    _    _    _    _    _    _
+  _    lctl  left down rght S-ret _    _    _    _    _    _    _    _
+  lalt /    .    ,    _    _    _    _    _    _    _    _    _
+  _    _    lsft _    _    _
 )
