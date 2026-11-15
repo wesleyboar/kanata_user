@@ -15,12 +15,16 @@
 
 (defalias
   mir (tap-hold-release 200 200 spc (layer-while-held spc-mirror))
-  pun (tap-hold-release 200 200 caps (layer-while-held cap-punct))
   nav-toggle (switch
     ((layer base)) (layer-switch nav) break
     ((layer nav))  (layer-switch base) break
     ()             XX break
   )
+  pun (tap-dance 200 (
+    (tap-hold-release 200 200 caps (layer-while-held cap-punct))
+    @nav-toggle
+  ))
+  nvc (tap-dance 200 (lctl @nav-toggle))
   paren-q (switch
     ((and lsft lalt)) [ break
     (lsft) S-9 break
@@ -39,11 +43,10 @@
   punc-d    @pun-d
 )
 
-;; Command+Shift enters and exits the persistent navigation layer.
+;; Double-tapping Caps enters and exits the persistent navigation layer.
 ;; Space+Caps produces Return while in NAV.
 ;; Q/E produce parentheses when the layer's Shift key is held.
 (defchordsv2
-  (lsft lmet) @nav-toggle 500 all-released ()
   (spc caps)  ret        500 all-released (base cap-punct spc-mirror)
 )
 
@@ -78,7 +81,7 @@
 (deflayer nav
   _    -    =    _    _    _    _    _    _    _    _    _    _
   _    bspc  @paren-q up   @paren-e spc  tab  _    _    _    _    _    _    _
-  _    lctl  left down rght S-ret _    _    _    _    _    _    _    _
+  _    @nvc  left down rght S-ret _    _    _    _    _    _    _    _
   lalt /    .    ,    _    _    _    _    _    _    _    _    _
   _    _    lsft _    _    _
 )

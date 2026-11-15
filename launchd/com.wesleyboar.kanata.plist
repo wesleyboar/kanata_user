@@ -8,7 +8,7 @@
   <array>
     <string>/opt/homebrew/bin/kanata</string>
     <string>--cfg</string>
-    <string>/Users/wbomar/Code/_accessibility/kanata_user/left-hand.kbd</string>
+    <string>/Users/Shared/_accessibility/kanata_user/left-hand.kbd</string>
   </array>
   <key>UserName</key>
   <string>root</string>
