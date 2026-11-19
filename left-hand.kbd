@@ -60,7 +60,7 @@
 ;; Q/W produce parentheses when the layer's Shift key is held.
 (defchordsv2
   (spc caps)  ret        500 all-released (base cap-punct spc-mirror)
-  (lmet caps) @nav-toggle 1000 all-released ()
+  (lmet caps) @nav-toggle 250 all-released ()
 )
 
 (defoverrides
